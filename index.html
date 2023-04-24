@@ -4,11 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" src="../rock-paper-scissors/styles.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
-    <script src="script.js"></script>
+
+    <div class="landing">
+        <h1 class="rps">Rock Paper Scissors</h1>
+        <div class="press-to-start"><p class="blinking">PRESS TO START</p></div>
+    </div>
+
+    <script>
+        document.addEventListener('keyup', function (e) {
+            let name = event.key;
+            let code = event.code;
+
+                if (name === 'Control') {
+                    return;
+                }
+                else {
+                    window.location.href="./game-index.html";
+                }
+        });  
+    </script>
 </body>
 
 </html>

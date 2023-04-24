@@ -4,7 +4,6 @@ let computerScore = 0;
 let computerSelection = getComputerChoice();
 let playerSelection;
 
-game();
 
 /* 
 Function name: getComputerChoice
