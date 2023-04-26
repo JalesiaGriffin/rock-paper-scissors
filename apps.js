@@ -12,6 +12,14 @@ let userScore = 0;
 let computerScore = 0;
 
 const handleClick = (e) => {
+    if (userScore === 5 || computerScore === 5) {
+    userScore = 0
+    computerScore = 0
+    userChoiceDisplay.innerHTML = 'You: '+ "<br>Score: " + userScore
+    computerChoiceDisplay.innerHTML = 'Computer: ' + "<br>Score: " + computerScore
+    gameResultDisplay.innerHTML = ""
+
+    }
     userChoice = e.target.id
     userChoiceDisplay.innerHTML = 'You: ' + userChoice + "<br>Score: " + userScore
     generateComputerChoice()
@@ -65,4 +73,4 @@ function playRound(userChoice) {
         }
 
     return
-}
+}   
