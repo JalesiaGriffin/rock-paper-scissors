@@ -13,15 +13,15 @@ let computerScore = 0;
 
 const handleClick = (e) => {
     userChoice = e.target.id
-    userChoiceDisplay.innerHTML = 'You: ' + userChoice
+    userChoiceDisplay.innerHTML = 'You: ' + userChoice + "<br>Score: " + userScore
     generateComputerChoice()
-    getResult()
+    playRound(userChoice)
 }
 
 const generateComputerChoice = () => {
     const randomChoice = choices[Math.floor(Math.random() * choices.length)]
     computerChoice = randomChoice
-    computerChoiceDisplay.innerHTML = 'Computer: ' + computerChoice
+    computerChoiceDisplay.innerHTML = 'Computer: ' + computerChoice + "<br>Score: " + computerScore
 }
 
 for (let i = 0; i < choices.length; i++) {
@@ -32,20 +32,22 @@ for (let i = 0; i < choices.length; i++) {
     gameGrid.appendChild(button)
 }
 
-const getResult = () => {
+function playRound(userChoice) {
+    
+    roundResultDisplay.innerHTML = ''
+
     switch (userChoice + computerChoice) {
         case 'scissorspaper':
         case 'rockscissors':
         case 'paperrock':
-            userScore++
-            roundResultDisplay.innerHTML = 'YOU WIN'
-            console.log(userScore)
+            userScore += 1
+            userChoiceDisplay.innerHTML = 'You: ' + userChoice + "<br>Score: " + userScore
             break
         case 'paperscissors':
         case 'scissorsrock':
         case 'rockpaper':
-            computerScore++
-            roundResultDisplay.innerHTML = 'LOSER!'
+            computerScore += 1
+            computerChoiceDisplay.innerHTML = 'Computer: ' + computerChoice + "<br>Score: " + computerScore
             break
         case 'paperpaper':
         case 'scissorsscissors':
@@ -54,12 +56,13 @@ const getResult = () => {
             break
     }
 
-
-if (userScore === 5){
-    gameResultDisplay.innerHTML = "You've won the game!"
-}
-else if (computerScore === 5) {
-        gameResultDisplay.innerHTML = "You've lost the game"
-        
+    if (userScore === 5){
+        gameResultDisplay.innerHTML = "You've won the game!"
     }
+
+    else if (computerScore === 5) {
+            gameResultDisplay.innerHTML = "You've lost the game :("
+        }
+
+    return
 }
